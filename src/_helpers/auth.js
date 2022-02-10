@@ -10,17 +10,17 @@ const expiresIn = process.env.JWT_TOKEN_SECRET_EXPIRESIN
 async function authenticate({ username, email, pwd }) {
  
         const result = await model.login.userAuth(username, email, pwd);
-        const userName = (await result).username;
-        const eMails = (await result).email
+
+        const userInfo = await result.find(u => u.username === username && u.pwd === pwd)
+
         
-       if( username !== undefined ){
-            const token = jwt.sign({ userName : userName , eMails:eMails  }, secret , { expiresIn: expiresIn });
-            return  { userName : userName , eMails:eMails , token: token }
-      } else {
-          
-          return { message : "Dude you are NOT AUTHORIZE have fun!!"}
-      }     
-     
+        if(!userInfo){ return { message : 'Username or password is incorrect'}}
+         else { 
+            const token = jwt.sign({ userName : userInfo  }, secret , { expiresIn: expiresIn });
+
+         return { token, userInfo }
+        }
+       
 }
 
 module.exports = { authenticate };
