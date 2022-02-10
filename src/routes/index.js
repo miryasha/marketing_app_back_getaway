@@ -10,7 +10,7 @@ const jwt = require('../_helpers/jwt.js');
 // router.use("/register",limiter.apiLimiterLogin, controllers.register);
 // router.use("/login",limiter.apiLimiterLogin, controllers.login);
 
-//router.use("/login",controllers.login);
+router.use("user/login",controllers.login);
 
 
 
