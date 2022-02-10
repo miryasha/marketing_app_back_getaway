@@ -4,6 +4,7 @@ const dotenv = require('dotenv');
 require('dotenv').config();
 
 const secret = process.env.JWT_TOKEN_SECRET;
+const expiresIn = process.env.JWT_TOKEN_SECRET_EXPIRESIN
 
 
 async function authenticate({ username, email, pwd }) {
@@ -13,7 +14,7 @@ async function authenticate({ username, email, pwd }) {
         const eMails = (await result).email
         
        if( username !== undefined ){
-            const token = jwt.sign({ userName : userName , eMails:eMails  }, secret , { expiresIn: '1d' });
+            const token = jwt.sign({ userName : userName , eMails:eMails  }, secret , { expiresIn: expiresIn });
             return  { userName : userName , eMails:eMails , token: token }
       } else {
           
