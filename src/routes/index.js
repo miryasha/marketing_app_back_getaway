@@ -1,4 +1,4 @@
-//const controllers = require("../controllers");
+const controllers = require("../controllers");
 const router = require("express").Router();
 //const limiter = require("../config/apiLimiter");
 const jwt = require('../_helpers/jwt.js');
@@ -11,6 +11,11 @@ const jwt = require('../_helpers/jwt.js');
 // router.use("/login",limiter.apiLimiterLogin, controllers.login);
 
 router.use("user/login",controllers.login);
+
+
+
+
+
 
 
 

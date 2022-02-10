@@ -4,12 +4,11 @@ require('dotenv').config();
 
 
 function jwt() {
-    const secret = process.env.TOKEN_SECRET;
+    const secret = process.env.JWT_TOKEN_SECRET;
     
     return expressJwt({ secret, algorithms: ['HS256'] }).unless({
         path: [
             // public routes that don't require authentication
-            'user/register',
             'user/login/authenticate',
          
         ]
