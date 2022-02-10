@@ -4,18 +4,9 @@ const router = require("express").Router();
 const jwt = require('../_helpers/jwt.js');
 
 
+router.use(jwt())
 
-//Login routes
-/////================
-// router.use("/register",limiter.apiLimiterLogin, controllers.register);
-// router.use("/login",limiter.apiLimiterLogin, controllers.login);
-
-router.use("user/login",controllers.login);
-
-
-
-
-
+router.use("/user/login",controllers.login);
 
 
 

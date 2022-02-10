@@ -8,17 +8,17 @@ const secret = process.env.JWT_TOKEN_SECRET;
 
 async function authenticate({ username, email, pwd }) {
  
-       const result = await model.login.findUser(username, email, pwd);
-       console.log(result)
-    //    const user = (await result).user;
-    //     console.log(user +"from auth")      
-    //    if( user !== undefined ){
-    //         const token = jwt.sign({ sub : user }, secret , { expiresIn: '1d' });
-    //         return  { user : user, token: token }
-    //   } else {
+        const result = await model.login.userAuth(username, email, pwd);
+        const userName = (await result).username;
+        const eMails = (await result).email
+        
+       if( username !== undefined ){
+            const token = jwt.sign({ userName : userName , eMails:eMails  }, secret , { expiresIn: '1d' });
+            return  { userName : userName , eMails:eMails , token: token }
+      } else {
           
-    //       return { message : "Data is not match"}
-    //   }     
+          return { message : "Dude you are NOT AUTHORIZE have fun!!"}
+      }     
      
 }
 

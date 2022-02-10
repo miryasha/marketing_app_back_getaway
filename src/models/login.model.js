@@ -1,13 +1,13 @@
 const Base = require("./base.model");
-const CryptoJS = require("crypto-js");
+//const CryptoJS = require("crypto-js");
 require('dotenv').config();
 
 
 class Login  extends Base{
 
-    findUser(username, email, pwd){
+    userAuth(username, email, pwd) {
                        
-    //         return this.findWithUser(username)
+            return this.findUser(username, email, pwd)
     //         .then(d => {            
                 
     //             const mapUser = d.map(u => u.username);
@@ -38,15 +38,15 @@ class Login  extends Base{
     //             });
        
             
-    //  }  
+     }  
 
-     findWithUser(username){
+    findUser(username, email, pwd){
         
-        let sql = `SELECT * FROM users_tbl WHERE username="${username}"`;
+        let sql = `SELECT * FROM u_tbl WHERE username="${username}" AND email="${email}" AND pwd="${pwd}"`;
         return this.query(sql);
                 
      }
 
   
- }
+  }
   module.exports = Login;

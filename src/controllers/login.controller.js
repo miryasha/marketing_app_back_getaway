@@ -4,7 +4,7 @@ const auth = require('../_helpers/auth');
 
 
 
-router.post('/authenticate',  authenticate)
+router.post('/auth',  authenticate)
  
 
 function authenticate(req, res, next) {
