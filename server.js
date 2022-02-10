@@ -1,8 +1,6 @@
 const express = require("express");
 const cors = require('cors');
-
-
-const corsOptions = require('./src/config/cors');
+const corsOptions = require('./src/config/cors.config');
 const routes = require("./src/routes")
 
 const app = express();
@@ -26,7 +24,7 @@ app.use(routes)
 
 // global error handler
 //============================
-app.use(errorHandler);
+//app.use(errorHandler);
 
 // Starts the server to begin listening
 // =============================================================
