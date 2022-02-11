@@ -16,7 +16,7 @@ async function authenticate({ username, email, pwd }) {
         
         if(!userInfo){ return { message : 'Username or password is incorrect'}}
          else { 
-            const token = jwt.sign({ userName : userInfo  }, secret , { expiresIn: expiresIn });
+            const token = jwt.sign({ userInfo : userInfo  }, secret , { expiresIn: expiresIn });
 
          return { token, userInfo }
         }
