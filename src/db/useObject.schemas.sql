@@ -2,7 +2,7 @@
 --parent table
 
 
-CREATE TABLE u_login_tbl
+CREATE TABLE IF NOT EXISTS u_login_tbl
 (
 	u_login_tbl_id int(10) NOT NULL AUTO_INCREMENT,
     username  varchar(20) NOT NULL UNIQUE,
@@ -24,7 +24,7 @@ INSERT INTO u_tbl (username, email, pwd, u_role, u_host,is_redirect ) VALUES
 
 --========================u_address_tbl===================================
 
-CREATE TABLE u_address_tbl
+CREATE TABLE IF NOT EXISTS u_address_tbl
 (
 	u_address_tbl_id int(10) NOT NULL AUTO_INCREMENT,
     u_login_tbl_id      int(10) NOT NULL,
@@ -34,11 +34,12 @@ CREATE TABLE u_address_tbl
     u_address_pri varchar(255) NOT NULL,
     city varchar(255) NOT NULL ,
     zip_code varchar(20) NOT NULL,
+    u_address_notes varchar(255) DEFAULT NULL,
 
 	PRIMARY KEY (u_address_tbl_id),
-    FOREIGN KEY (u_id) REFERENCES u_login_tbl (u_login_tbl_id) 
-    ON DELETE CASCADE 
-    ON UPDATE CASCADE
+    -- FOREIGN KEY (u_id) REFERENCES u_login_tbl (u_login_tbl_id) 
+    -- ON DELETE CASCADE 
+    -- ON UPDATE CASCADE
 );
 
 INSERT INTO u_address_tbl (u_login_tbl_id,tel_pri, u_address_pri, city, zip_code ) VALUES   
@@ -49,7 +50,7 @@ INSERT INTO u_address_tbl (u_login_tbl_id,tel_pri, u_address_pri, city, zip_code
 ---================u_host_info_tbl===============
 
 
-CREATE TABLE u_host_info_tbl
+CREATE TABLE IF NOT EXISTS u_host_info_tbl
 (
 	u_host_info_tb_id int(10) NOT NULL AUTO_INCREMENT,
     u_login_tbl_id      int(10) NOT NULL,
@@ -66,9 +67,9 @@ CREATE TABLE u_host_info_tbl
     mail_auth_pass varchar(255) DEFAULT NULL,
 
 	PRIMARY KEY (u_host_info_tbl_id),
-    FOREIGN KEY (u_id) REFERENCES u_login_tbl (u_login_tbl_id) 
-    ON DELETE CASCADE 
-    ON UPDATE CASCADE
+    -- FOREIGN KEY (u_id) REFERENCES u_login_tbl (u_login_tbl_id) 
+    -- ON DELETE CASCADE 
+    -- ON UPDATE CASCADE
 );
 
 INSERT INTO u_host_info_tbl (u_login_tbl_id, db_user_name, db_pwd, dbase_name ) VALUES   
@@ -78,22 +79,22 @@ INSERT INTO u_host_info_tbl (u_login_tbl_id, db_user_name, db_pwd, dbase_name ) 
 
 ---================u_authorize_tbl===============
 
-CREATE TABLE u_authorize_tbl
+CREATE TABLE IF NOT EXISTS u_authorize_tbl
 (
 	u_authorize_tbl_id int(10) NOT NULL AUTO_INCREMENT,
     u_login_tbl_id     int(10) NOT NULL,
     national_id_num varchar(20) DEFAULT NULL,
 
 	PRIMARY KEY (u_authorize_tbl_id),
-    FOREIGN KEY (u_id) REFERENCES u_login_tbl (u_login_tbl_id) 
-    ON DELETE CASCADE 
-    ON UPDATE CASCADE
+    -- FOREIGN KEY (u_id) REFERENCES u_login_tbl (u_login_tbl_id) 
+    -- ON DELETE CASCADE 
+    -- ON UPDATE CASCADE
 );
 
 
 ---================u_payment_info_tbl===============
 
-CREATE TABLE u_payment_info_tbl
+CREATE TABLE IF NOT EXISTS u_payment_info_tbl
 (
 	u_payment_info_tbl_id int(10) NOT NULL AUTO_INCREMENT,
     u_login_tbl_id     int(10) NOT NULL,
@@ -105,16 +106,16 @@ CREATE TABLE u_payment_info_tbl
     u_payment_notes varchar(255) DEFAULT NULL,
 
 	PRIMARY KEY (u_payment_info_tbl_id),
-    FOREIGN KEY (u_id) REFERENCES u_login_tbl (u_login_tbl_id) 
-    ON DELETE CASCADE 
-    ON UPDATE CASCADE
+    -- FOREIGN KEY (u_id) REFERENCES u_login_tbl (u_login_tbl_id) 
+    -- ON DELETE CASCADE 
+    -- ON UPDATE CASCADE
 );
 
 
 ---================u_services_info_tbl===============
 
 
-CREATE TABLE u_services_info_tbl
+CREATE TABLE IF NOT EXISTS u_services_info_tbl
 (
 	u_services_info_tbl_id int(10) NOT NULL AUTO_INCREMENT,
     u_login_tbl_id     int(10) NOT NULL,
@@ -125,7 +126,7 @@ CREATE TABLE u_services_info_tbl
     u_services_accounting varchar(5) NOT NULL DEFAULT 'false',
 
 	PRIMARY KEY (u_services_info_tbl_id),
-    FOREIGN KEY (u_id) REFERENCES u_login_tbl (u_login_tbl_id) 
-    ON DELETE CASCADE 
-    ON UPDATE CASCADE
+    -- FOREIGN KEY (u_id) REFERENCES u_login_tbl (u_login_tbl_id) 
+    -- ON DELETE CASCADE 
+    -- ON UPDATE CASCADE
 );
