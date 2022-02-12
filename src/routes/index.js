@@ -9,6 +9,11 @@ router.use(jwt())
 router.use("/user/login",controllers.login);
 
 
+///===Inventory routes
+
+router.use("/inventory/warehouse",controllers.warehouse);
+
+
 
 router.use("/", (req, res)=>{
     res.send("Hi from Auth Server!")

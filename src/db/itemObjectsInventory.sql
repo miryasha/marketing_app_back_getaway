@@ -136,7 +136,7 @@ CREATE TABLE IF NOT EXISTS inv_items_shipped_tbl
     ON DELETE CASCADE 
     ON UPDATE CASCADE,
 
-     FOREIGN KEY (reorder_alarm_tbl_id) REFERENCES reorder_alarm_tbl (reorder_alarm_tbl_id) 
+    FOREIGN KEY (reorder_alarm_tbl_id) REFERENCES reorder_alarm_tbl (reorder_alarm_tbl_id) 
     ON DELETE CASCADE 
     ON UPDATE CASCADE
 );

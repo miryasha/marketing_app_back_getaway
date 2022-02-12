@@ -1,10 +1,10 @@
-const express = require('express');
 const router = express.Router();
 const auth = require('../_helpers/auth');
 
 
 
 router.post('/auth',  authenticate)
+
  
 
 function authenticate(req, res, next) {
