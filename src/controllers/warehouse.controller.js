@@ -1,3 +1,4 @@
+const express = require('express');
 const router = express.Router();
 
 
@@ -6,7 +7,7 @@ router.post('/',  createWh)
 router.put('/',  editWh)
 router.delete('/',  deleteWh)
 router.get('/',  getAllWh)
-router.get('/',  getWithIdWh)
+router.get('/:id',  getWithIdWh)
 
 router.post('/',  customWh)
 
